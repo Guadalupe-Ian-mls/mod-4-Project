@@ -1,13 +1,27 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>mod-4-project</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Pair Project</title>
+</head>
+<body>
+  <input type="text">
+ <img src="https://cdn3d.iconscout.com/3d/premium/thumb/anime-badge-3d-icon-png-download-8955624.png" alt="ILA">
+ <h1>Anime List!</h1>
+ <script>
+   const testRoute = async (url) => {
+     const response = await fetch(url)
+     const data = await response.json()
+     console.log('data:', data);
+   }
+
+
+   const url1 = 'https://api.jikan.moe/v4/anime';
+   const url2 = 'https://api.jikan.moe/v4/anime/1/full';
+  
+   testRoute(url1);
+   testRoute(url2);
+ </script>
+</body>
 </html>
