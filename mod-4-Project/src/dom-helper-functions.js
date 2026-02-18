@@ -26,8 +26,10 @@ export const renderAnimeDetails = (anime) => {
         li.textContent = genre.name;
         genresList.appendChild(li);
     });
+    const close = document.createElement('button')
+    close.textContent = `close`
 
-    animeDetails.append(h2,img,animeSummery,animeRating,genresList);
+    animeDetails.append(h2,img,animeSummery,animeRating,genresList,close);
 };
 
 const animeList = document.querySelector('#anime-list');

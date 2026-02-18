@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Anime Browser</title>
-  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./src/style.css">
 </head>
 
 <body>
@@ -14,29 +14,29 @@
   </header>
 
   <p id="error-message"></p>
-
+  <dialog open id="anime-details" class="hidden">
+    
+    <h2 id="Anime-title">Cowboy Bebop</h2>
+    <img src="" alt="" id="anime-thumbnail">
+    <ul id="genres"></ul>
+    <p id="anime-description">Another day, another bounty—such is the life of the often unlucky crew of the Bebop.
+      However, this routine is interrupted when Faye, who is chasing a fairly worthless target on Mars, witnesses an
+      oil tanker suddenly explode, causing mass hysteria. As casualties mount due to a strange disease spreading
+      through the smoke from the blast, a whopping three hundred million woolong price is placed on the head of the
+      supposed perpetrator.\n\nWith lives at stake and a solution to their money problems in sight, the Bebop crew
+      springs into action. Spike, Jet, Faye, and Edward, followed closely by Ein, split up to pursue different leads
+      across Alba City. Through their individual investigations, they discover a cover-up scheme involving a
+      pharmaceutical company, revealing a plot that reaches much further than the ragtag team of bounty hunters could
+      have realized.\n\n[Written by MAL Rewrite]</p>
+    <p>Rating: <span id="anime-rating"></span> / 5</p>
+    <button>close</button>
+  </dialog>
   <main>
-    <section id="anime-details" class="hidden">
-      
-      <h2 id="Anime-title">Cowboy Bebop</h2>
-      <img src="" alt="" id="anime-thumbnail">
-      <ul id="genres"></ul>
-      <p id="anime-description">Another day, another bounty—such is the life of the often unlucky crew of the Bebop.
-        However, this routine is interrupted when Faye, who is chasing a fairly worthless target on Mars, witnesses an
-        oil tanker suddenly explode, causing mass hysteria. As casualties mount due to a strange disease spreading
-        through the smoke from the blast, a whopping three hundred million woolong price is placed on the head of the
-        supposed perpetrator.\n\nWith lives at stake and a solution to their money problems in sight, the Bebop crew
-        springs into action. Spike, Jet, Faye, and Edward, followed closely by Ein, split up to pursue different leads
-        across Alba City. Through their individual investigations, they discover a cover-up scheme involving a
-        pharmaceutical company, revealing a plot that reaches much further than the ragtag team of bounty hunters could
-        have realized.\n\n[Written by MAL Rewrite]</p>
-      <p>Rating: <span id="anime-rating"></span> / 5</p>
-    </section>
-
     <section>
+      <div id="searchBar">
       <h2 id="anime-heading">Anime (<span id="anime-count">0</span>)</h2>
-
       <form id="search-form">
+      </div>
         <div>
           <label for="query">Search</label>
           <input type="text" id="query" name="query" placeholder="Search anime..." required>
