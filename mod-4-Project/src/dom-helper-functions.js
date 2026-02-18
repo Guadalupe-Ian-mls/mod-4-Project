@@ -28,6 +28,8 @@ export const renderAnimeDetails = async (anime) => {
         li.textContent = genre.name;
         genresList.appendChild(li);
     });
+    const close = document.createElement('button')
+    close.textContent = `close`
 
     //Character List
     const animeCast = document.createElement('ul');
@@ -53,6 +55,7 @@ export const renderAnimeDetails = async (anime) => {
 
 
     animeDetails.append(h2, img, animeSummery, animeRating, genresList, animeCast);
+    animeDetails.append(h2,img,animeSummery,animeRating,genresList,close);
 };
 
 const animeList = document.querySelector('#anime-list');
