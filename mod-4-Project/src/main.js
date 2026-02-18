@@ -1,8 +1,9 @@
-import { getAnimeByID} from './fetch-helper-functions'
-import { renderAnimeDetails } from './dom-helper-functions'
-const errorMessage = document.querySelector('#error-message');
+import { getAnimeByID, getAnime } from './fetch-helper-functions'
+import { renderAnimeDetails, renderAnime } from './dom-helper-functions'
 
+const errorMessage = document.querySelector('#error-message');
 const animeList = document.querySelector('#anime-list');
+
 animeList.addEventListener('click',async(event)=>{
     const li = event.target.closest('li');
     if(!li) return;
@@ -16,3 +17,11 @@ animeList.addEventListener('click',async(event)=>{
 
     renderAnimeDetails(anime);
 })
+
+const anime = await getAnime();
+
+if (anime.error) {
+  errorMessage.textContent = anime.error.message;
+} else {
+  renderAnime(anime);
+}
