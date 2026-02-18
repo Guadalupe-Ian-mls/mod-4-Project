@@ -31,9 +31,6 @@ export const getAnime = async () => {
     }
 }
 
-export const getCharacters = async (animeId) => {
-    try {
-        const response = await fetch(`https://api.jikan.moe/v4/anime/${animeId}/characters`);
 export const getAnimeBySearch = async (query) => {
     try {
         const response = await fetch(`https://api.jikan.moe/v4/anime?q=${query}`);
@@ -43,10 +40,25 @@ export const getAnimeBySearch = async (query) => {
         }
 
         const data = await response.json();
-        const characters = data.data;
-        return { data: characters, error: null };
         const anime = data.data;
         return { data: anime, error: null };
+    }
+    catch (error) {
+        return { data: null, error };
+    }
+}
+
+export const getCharacters = async (animeId) => {
+    try {
+        const response = await fetch(`https://api.jikan.moe/v4/anime/${animeId}/characters`);
+
+        if (!response.ok) {
+            throw Error(`Fetch failed. ${response.status} ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        const characters = data.data;
+        return { data: characters, error: null };
     }
     catch (error) {
         return { data: null, error };

@@ -1,4 +1,4 @@
-import { getCharacters } from "./fetch-helper-functions";
+import { getCharacters,getAnimeByID,getAnime} from "./fetch-helper-functions";
 
 const animeDetails = document.querySelector("#anime-details");
 
