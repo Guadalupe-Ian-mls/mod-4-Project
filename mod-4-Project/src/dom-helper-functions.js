@@ -33,20 +33,24 @@ export const renderAnimeDetails = async (anime) => {
     const animeCast = document.createElement('ul');
     const characters = await getCharacters(anime.mal_id);
 
-    characters.data.forEach((character) => {
+    for (let i = 0; i < 10; i++) {
+        const character = characters.data[i];
         const li = document.createElement('li');
+        const h3 = document.createElement('h3');
         const name = document.createElement('p');
         const img = document.createElement('img');
         const role = document.createElement('p');
 
-        name.textContent = character.name;
-
-        img.alt = `Image of ${character.name}`;
+        h3.textContent = 'Characters:'
+        name.textContent = character.character.name;
+        img.src = character.character.images.jpg.image_url;
+        img.alt = `Image of ${character.character.name}`;
         role.textContent = `Role: ${character.role}`;
-        li.append(name, img, role);
+        li.append(h3, name, img, role);
         animeCast.append(li);
-        console.log(character.name)
-    });
+    }
+
+
 
     animeDetails.append(h2, img, animeSummery, animeRating, genresList, animeCast);
 };
