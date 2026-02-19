@@ -20,8 +20,17 @@ main{
   justify-content: center;
 }
 #searchBar{
-  display: inline;
-  gap: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 30px;
+}
+form {
+  display: flex;
+  gap: 10px;
+}
+input{
+  padding: 5px;
 }
 
 
