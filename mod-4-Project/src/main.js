@@ -55,6 +55,10 @@ animeDetails.addEventListener("click", async (e) => {
     animeDetails.close();
 
     renderAnime({ data });
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
 });
 
 animeDetails.addEventListener('submit', (e) => {
