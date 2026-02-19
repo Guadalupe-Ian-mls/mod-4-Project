@@ -1,4 +1,4 @@
-import { getCharacters, getAnimeByID, getAnime } from "./fetch-helper-functions";
+import { getCharacters, getAnimeByID, getAnime,getByGenre } from "./fetch-helper-functions";
 
 const animeDetails = document.querySelector("#anime-details");
 const animeList = document.querySelector('#anime-list');
@@ -24,10 +24,11 @@ export const renderAnimeDetails = async (anime) => {
     animeRating.textContent = `Rating: ${anime.score}/10`;
 
     const genresList = document.createElement("ul");
-
+    genresList.className = 'genre-list';
     anime.genres.forEach((genre) => {
         const li = document.createElement("li");
         li.textContent = genre.name;
+        li.dataset.genreId = genre.mal_id; 
         genresList.appendChild(li);
     });
 
@@ -88,3 +89,4 @@ animeDetails.addEventListener('click', (e) => {
     animeDetails.close();
   }
 });
+
