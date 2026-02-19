@@ -9,7 +9,7 @@ export const getAnimeByID = async (id) => {
 
     }
     catch (error) {
-        console.log(`Error: ${error.message}`);
+        console.warn(`Error: ${error.message}`);
         return null;
     }
 }
@@ -75,7 +75,7 @@ export const getByGenre=async(id)=>{
         return responseData.data;
     }
     catch (error) {
-        console.log(`Error: ${error.message}`);
+        console.warn(`Error: ${error.message}`);
         return null;
     }
 }
