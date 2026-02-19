@@ -5,10 +5,9 @@ const animeList = document.querySelector('#anime-list');
 const animeCount = document.querySelector('#anime-count');
 
 export const renderAnimeDetails = async (anime) => {
-    animeDetails.classList.remove('hidden');
 
     animeDetails.innerHTML = '';
-    animeDetails.removeAttribute('hidden');
+    animeDetails.showModal();
 
     //Renders main details onto description 
     const h2 = document.createElement('h2');
@@ -37,7 +36,9 @@ export const renderAnimeDetails = async (anime) => {
 
     const close = document.createElement('button')
     close.textContent = `close`
-
+    close.addEventListener('click', () => {
+        animeDetails.close();
+    });
     //Renders the character list
     const animeCast = document.createElement('ul');
     const characters = await getCharacters(anime.mal_id);
@@ -82,3 +83,8 @@ export const renderAnime = (anime) => {
         animeList.append(li);
     });
 };
+animeDetails.addEventListener('click', (e) => {
+  if (e.target === animeDetails) {
+    animeDetails.close();
+  }
+});
