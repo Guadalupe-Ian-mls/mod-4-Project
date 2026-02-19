@@ -106,6 +106,21 @@ dialog::backdrop {
   border: solid red 3px;
   padding: 10px;
 }
+#rating {
+  direction: rtl;
+}
+#rating input {
+  display: none;
+}
+#rating label {
+  font-size: 2rem;
+  cursor: pointer;
+}
+#rating input:checked ~ label,
+#rating label:hover,
+#rating label:hover ~ label {
+  color: gold;
+}
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

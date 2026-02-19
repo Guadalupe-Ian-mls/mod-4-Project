@@ -52,3 +52,5 @@ index.html
 Favorites system with localStorage
 
 Accessibility enhancements
+Lupe AI doc use:
+Ian AI doc use:
