@@ -1,6 +1,8 @@
-import { getCharacters,getAnimeByID,getAnime} from "./fetch-helper-functions";
+import { getCharacters, getAnimeByID, getAnime } from "./fetch-helper-functions";
 
 const animeDetails = document.querySelector("#anime-details");
+const animeList = document.querySelector('#anime-list');
+const animeCount = document.querySelector('#anime-count');
 
 export const renderAnimeDetails = async (anime) => {
     animeDetails.classList.remove('hidden');
@@ -8,6 +10,7 @@ export const renderAnimeDetails = async (anime) => {
     animeDetails.innerHTML = '';
     animeDetails.removeAttribute('hidden');
 
+    //Renders main details onto description 
     const h2 = document.createElement('h2');
     h2.textContent = anime.title;
 
@@ -28,38 +31,37 @@ export const renderAnimeDetails = async (anime) => {
         li.textContent = genre.name;
         genresList.appendChild(li);
     });
+
+    const h3 = document.createElement('h3');
+    h3.textContent = 'Characters:';
+
     const close = document.createElement('button')
     close.textContent = `close`
 
-    //Character List
+    //Renders the character list
     const animeCast = document.createElement('ul');
     const characters = await getCharacters(anime.mal_id);
 
     for (let i = 0; i < 10; i++) {
         const character = characters.data[i];
         const li = document.createElement('li');
-        const h3 = document.createElement('h3');
         const name = document.createElement('p');
         const img = document.createElement('img');
         const role = document.createElement('p');
 
-        h3.textContent = 'Characters:'
         name.textContent = character.character.name;
         img.src = character.character.images.jpg.image_url;
         img.alt = `Image of ${character.character.name}`;
+        img.style.width = '50px';
         role.textContent = `Role: ${character.role}`;
-        li.append(h3, name, img, role);
+        li.append(name, img, role);
+        li.className = 'character';
         animeCast.append(li);
     }
+    animeCast.className = 'anime-characters';
 
-
-
-    animeDetails.append(h2, img, animeSummery, animeRating, genresList, animeCast);
-    animeDetails.append(h2,img,animeSummery,animeRating,genresList,close);
+    animeDetails.append(h2, img, animeSummery, animeRating, genresList, h3, animeCast, close);
 };
-
-const animeList = document.querySelector('#anime-list');
-const animeCount = document.querySelector('#anime-count');
 
 export const renderAnime = (anime) => {
     animeList.innerHTML = '';

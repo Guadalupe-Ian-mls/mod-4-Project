@@ -35,7 +35,7 @@ searchForm.addEventListener('submit', async (event) => {
     const searchedAnime = await getAnimeBySearch(query);
 
     renderAnime(searchedAnime);
-    form.reset();
+    searchForm.reset();
   }
   catch (error) {
     errorMessage.textContent = error.message;
