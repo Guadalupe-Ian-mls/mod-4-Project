@@ -33,7 +33,7 @@ export const getAnime = async () => {
 
 export const getAnimeBySearch = async (query) => {
     try {
-        const response = await fetch(`https://api.jikan.moe/v4/anime?q=${query}`);
+        const response = await fetch(`https://api.jikan.moe/v4/anime?q=${query}/sfw`);
 
         if (!response.ok) {
             throw Error(`Fetch failed. ${response.status} ${response.statusText}`);
