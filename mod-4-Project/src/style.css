@@ -62,19 +62,28 @@ ul{
 }
 
 dialog {
-    width: 80%;
-    max-width: 800px;
-    height: auto;
-    max-height: 80%;
-    overflow: auto;
-    margin: auto;
-    padding: 20px;
-    border: none;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px #0003;
-    z-index: 1000;
+  width: 80%;
+  max-width: 800px;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: 20px;
+  border: none;
+  border-radius: 12px;
+  margin: auto;
 }
-
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.6);
+}
+.anime-characters{
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr;
+}
+.anime-characters li{
+  background-color: aqua;
+  border-radius: 75%;
+  padding: 20px;
+}
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -90,9 +99,15 @@ dialog {
   #anime-list {
     grid-template-columns: repeat(2, 1fr);
   }
+  .anime-characters {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 @media (min-width: 900px) {
   #anime-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .anime-characters {
     grid-template-columns: repeat(3, 1fr);
   }
 }
