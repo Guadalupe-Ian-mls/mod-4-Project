@@ -62,7 +62,30 @@ export const renderAnimeDetails = async (anime) => {
     }
     animeCast.className = 'anime-characters';
 
-    animeDetails.append(h2, img, animeSummery, animeRating, genresList, h3, animeCast, close);
+    const form = document.createElement('form');
+    form.id = 'rating';
+    for (let i = 5; i >= 1; i--) {
+        const input = document.createElement('input');
+        input.type = 'radio';
+        input.id = `star${i}`;
+        input.name = 'rating';
+        input.value = i;
+
+        const label = document.createElement('label');
+        label.htmlFor = input.id; 
+        label.title = `${i} star${i > 1 ? 's' : ''}`;
+        label.textContent = '☆'; 
+        const button = document.createElement('button');
+        form.append(input, label);
+    }
+    const button = document.createElement('button');
+    button.type = 'submit';
+    button.textContent = 'Submit Rating';
+
+    form.append(button);
+    
+
+    animeDetails.append(h2, img, animeSummery, animeRating, genresList, h3, animeCast,form, close);
 };
 
 export const renderAnime = (anime) => {

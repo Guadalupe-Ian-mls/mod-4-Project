@@ -4,7 +4,6 @@ import { renderAnimeDetails, renderAnime, renderCharacterDetails } from './dom-h
 const errorMessage = document.querySelector('#error-message');
 const animeList = document.querySelector('#anime-list');
 const searchForm = document.querySelector('#search-form');
-const genresList = document.querySelector('#genres');
 const animeDetails = document.querySelector('#anime-details');
 
 animeList.addEventListener('click', async (event) => {
@@ -55,14 +54,29 @@ animeDetails.addEventListener("click", async (e) => {
 
   animeDetails.close();
 
-  // Important: wrap to match your renderAnime format
-  renderAnime({ data });
+    renderAnime({ data });
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
 });
 
-animeDetails.addEventListener('click', async (event) => {
-  const characterId = event.target.closest('li').dataset.characterId;
+animeDetails.addEventListener('submit', (e) => {
+  if (e.target.id !== 'rating') return;
 
-  if (!characterId) return;
+  e.preventDefault();
 
-  renderCharacterDetails(await getCharacterById(characterId));
+  const selectedRating = e.target.querySelector('input[name="rating"]:checked')?.value;
+
+  if (!selectedRating) {
+    errorMessage.textContent = 'Please select a rating.';
+    setTimeout(() => errorMessage.textContent = '', 2000);
+    return;
+  }
+
+  // Show thank you message
+  const thankYou = document.createElement('p');
+  thankYou.textContent = `⭐ Thank you for rating ${selectedRating} star(s)!`;
+
+  e.target.replaceWith(thankYou);
 });
