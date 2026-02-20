@@ -80,3 +80,15 @@ animeDetails.addEventListener('submit', (e) => {
 
   e.target.replaceWith(thankYou);
 });
+
+animeDetails.addEventListener("click", async (e) => {
+  const characterId = e.target.closest("li")?.dataset.characterId;
+
+  if (!characterId) return;
+
+  const character = await getCharacterById(characterId);
+
+  if (!character || character.error) return;
+
+  renderCharacterDetails(character);
+});

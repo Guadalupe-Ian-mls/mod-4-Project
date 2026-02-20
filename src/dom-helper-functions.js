@@ -75,7 +75,6 @@ export const renderAnimeDetails = async (anime) => {
         label.htmlFor = input.id; 
         label.title = `${i} star${i > 1 ? 's' : ''}`;
         label.textContent = '☆'; 
-        const button = document.createElement('button');
         form.append(input, label);
     }
     const button = document.createElement('button');
