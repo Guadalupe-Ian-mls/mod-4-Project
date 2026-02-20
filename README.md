@@ -1,7 +1,7 @@
 # mod-4-Project
 
 🎌 Anime Browser
-
+live link:https://guadalupe-ian-mls.github.io/mod-4-Project/?query=k
 A modular, API-driven Anime Browser built with vanilla JavaScript (ES6+) that allows users to search for anime titles and view detailed information in a dynamic modal interface.
 
 This project focuses on strengthening core front-end fundamentals without using frameworks.
