@@ -65,7 +65,7 @@ export const getCharacters = async (animeId) => {
     }
 }
 
-export const getByGenre=async(id)=>{
+export const getByGenre = async (id) => {
     try {
         const response = await fetch(`https://api.jikan.moe/v4/anime?genres=${id}`);
         if (!response.ok) {
@@ -77,5 +77,21 @@ export const getByGenre=async(id)=>{
     catch (error) {
         console.warn(`Error: ${error.message}`);
         return null;
+    }
+}
+export const getCharacterById = async (id) => {
+    try {
+        const response = await fetch(`https://api.jikan.moe/v4/characters/${id}`);
+
+        if (!response.ok) {
+            throw Error(`Fetch failed. ${response.status} ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        const character = data.data;
+        return { data: character, error: null };
+    }
+    catch (error) {
+        return { data: null, error };
     }
 }
