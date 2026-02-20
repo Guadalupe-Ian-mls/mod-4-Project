@@ -1,4 +1,4 @@
-import { getCharacters, getAnimeByID, getAnime,getByGenre } from "./fetch-helper-functions";
+import { getCharacters, getAnimeByID, getAnime, getByGenre } from "./fetch-helper-functions";
 
 const animeDetails = document.querySelector("#anime-details");
 const animeList = document.querySelector('#anime-list');
@@ -28,7 +28,7 @@ export const renderAnimeDetails = async (anime) => {
     anime.genres.forEach((genre) => {
         const li = document.createElement("li");
         li.textContent = genre.name;
-        li.dataset.genreId = genre.mal_id; 
+        li.dataset.genreId = genre.mal_id;
         genresList.appendChild(li);
     });
 
@@ -57,7 +57,7 @@ export const renderAnimeDetails = async (anime) => {
         img.style.width = '50px';
         role.textContent = `Role: ${character.role}`;
         li.append(name, img, role);
-        li.className = 'character';
+        li.dataset.characterId = character.character.mal_id;
         animeCast.append(li);
     }
     animeCast.className = 'anime-characters';
@@ -85,8 +85,25 @@ export const renderAnime = (anime) => {
     });
 };
 animeDetails.addEventListener('click', (e) => {
-  if (e.target === animeDetails) {
-    animeDetails.close();
-  }
+    if (e.target === animeDetails) {
+        animeDetails.close();
+    }
 });
 
+export const renderCharacterDetails = (character) => {
+    animeDetails.innerHTML = '';
+    animeDetails.showModal();
+
+    const name = document.createElement('h3');
+    const img = document.createElement('img');
+    const aboutSection = document.createElement('h4');
+    const about = document.createElement('p');
+
+    name.textContent = character.data.name;
+    img.src = character.data.images.jpg.image_url;
+    img.alt = `Image of ${character.data.name}`;
+    aboutSection.textContent = 'About';
+    about.textContent = character.data.about;
+
+    animeDetails.append(name, img, aboutSection, about);
+}

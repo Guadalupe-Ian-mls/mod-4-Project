@@ -1,5 +1,5 @@
-import { getAnimeByID, getAnime, getAnimeBySearch,getByGenre} from './fetch-helper-functions'
-import { renderAnimeDetails, renderAnime } from './dom-helper-functions'
+import { getAnimeByID, getAnime, getAnimeBySearch, getByGenre, getCharacterById } from './fetch-helper-functions'
+import { renderAnimeDetails, renderAnime, renderCharacterDetails } from './dom-helper-functions'
 
 const errorMessage = document.querySelector('#error-message');
 const animeList = document.querySelector('#anime-list');
@@ -45,16 +45,24 @@ searchForm.addEventListener('submit', async (event) => {
 });
 
 animeDetails.addEventListener("click", async (e) => {
-    const genreId = e.target.dataset.genreId;
+  const genreId = e.target.dataset.genreId;
 
-    if (!genreId) return;
+  if (!genreId) return;
 
-    const data = await getByGenre(genreId);
+  const data = await getByGenre(genreId);
 
-    if (!data) return;
+  if (!data) return;
 
-    animeDetails.close();
+  animeDetails.close();
 
-    // Important: wrap to match your renderAnime format
-    renderAnime({ data });
+  // Important: wrap to match your renderAnime format
+  renderAnime({ data });
+});
+
+animeDetails.addEventListener('click', async (event) => {
+  const characterId = event.target.closest('li').dataset.characterId;
+
+  if (!characterId) return;
+
+  renderCharacterDetails(await getCharacterById(characterId));
 });
