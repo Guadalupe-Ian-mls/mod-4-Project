@@ -37,6 +37,7 @@ export const renderAnimeDetails = async (anime) => {
 
     const close = document.createElement('button')
     close.textContent = `close`
+    close.classList.add('close');
     close.addEventListener('click', () => {
         animeDetails.close();
     });
@@ -62,8 +63,12 @@ export const renderAnimeDetails = async (anime) => {
     }
     animeCast.className = 'anime-characters';
 
+    const ratingWrapper = document.createElement('div');
+    ratingWrapper.classList.add('rating-wrapper');
+
     const form = document.createElement('form');
     form.id = 'rating';
+
     for (let i = 5; i >= 1; i--) {
         const input = document.createElement('input');
         input.type = 'radio';
@@ -72,19 +77,23 @@ export const renderAnimeDetails = async (anime) => {
         input.value = i;
 
         const label = document.createElement('label');
-        label.htmlFor = input.id; 
+        label.htmlFor = input.id;
         label.title = `${i} star${i > 1 ? 's' : ''}`;
-        label.textContent = '☆'; 
+        label.textContent = '☆';
+
         form.append(input, label);
     }
+
     const button = document.createElement('button');
     button.type = 'submit';
     button.textContent = 'Submit Rating';
+    button.classList.add('submit-btn');
 
     form.append(button);
-    
 
-    animeDetails.append(h2, img, animeSummery, animeRating, genresList, h3, animeCast,form, close);
+    ratingWrapper.append(form);
+
+    animeDetails.append(h2,img,animeSummery,animeRating,genresList,h3,animeCast,ratingWrapper,close);
 };
 
 export const renderAnime = (anime) => {
