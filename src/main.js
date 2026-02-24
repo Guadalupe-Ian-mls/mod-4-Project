@@ -47,9 +47,9 @@ animeDetails.addEventListener("click", async (e) => {
   const genreId = e.target.dataset.genreId;
 
   if (!genreId) return;
-
+//code for loading
   const data = await getByGenre(genreId);
-
+//remove for loading
   if (!data) return;
 
   animeDetails.close();
